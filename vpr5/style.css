@@ -1,0 +1,457 @@
+:root{
+  --bg:#f6f8ff;
+  --card:#ffffff;
+  --ink:#0f172a;
+  --muted:#64748b;
+  --line:#e5e7eb;
+  --accent:#3b82f6;
+  --good:#22c55e;
+  --bad:#ef4444;
+  --soft:#eef2ff;
+  --shadow: 0 16px 40px rgba(15,23,42,.10);
+  --radius:18px;
+
+  --h1:30px;
+  --h2:24px;
+  --base:18px;
+  --small:15px;
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+
+body{
+  margin:0;
+  font-family:"Nunito", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: radial-gradient(1200px 600px at 20% 0%, #ffffff 0%, var(--bg) 60%, #f3f5ff 100%);
+  color:var(--ink);
+}
+
+.app{
+  max-width:1100px;
+  margin:0 auto;
+  padding:18px 14px 40px;
+}
+
+/* ===== Header ===== */
+.top{
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:16px;
+}
+
+.brand{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.logo{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  font-size:22px;
+}
+
+h1{
+  margin:0;
+  font-size:var(--h1);
+}
+
+.subtitle{
+  color:var(--muted);
+  font-size:var(--small);
+}
+
+/* ===== hide top nav if it exists ===== */
+.chips, nav.chips{ display:none !important; }
+
+/* ===== Cards ===== */
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:16px;
+  margin-bottom:16px;
+}
+
+.cardHead h2{
+  margin:0 0 6px;
+  font-size:var(--h2);
+  font-weight:800;
+}
+
+/* инструкции под заголовком задания */
+.hint{
+  margin:0;
+  font-size:16px;           /* чуть меньше */
+  line-height:1.35;
+  color:var(--ink);         /* чёрный */
+  font-weight:400;          /* обычный */
+}
+/* если внутри hint есть <strong> — НЕ делаем жирным */
+.hint strong, .hint b{
+  font-weight:400;
+}
+
+/* ===== Buttons ===== */
+.toolsRow,
+.bottomRow{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:12px;
+  align-items:center;
+}
+
+.btn{
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--ink);
+  border-radius:14px;
+  padding:10px 14px;
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.btn.primary{
+  background:var(--accent);
+  color:#fff;
+}
+
+.btn.success{
+  background:rgba(34,197,94,.12);
+  border-color:rgba(34,197,94,.4);
+}
+
+/* =========================================================
+   COMMON: варианты (radio label)
+========================================================= */
+.opt{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 10px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:#fff;
+  font-size:17px;
+  font-weight:400;          /* варианты НЕ жирные */
+  cursor:pointer;
+}
+
+.opt input{ transform:scale(1.15); }
+
+/* =========================================================
+   CHECK HIGHLIGHT — ярко на выбранном варианте
+========================================================= */
+.opt.choice-correct{
+  border:3px solid var(--good) !important;
+  box-shadow:0 0 0 5px rgba(34,197,94,.18) !important;
+  background:rgba(34,197,94,.06) !important;
+}
+
+.opt.choice-wrong{
+  border:3px solid var(--bad) !important;
+  box-shadow:0 0 0 5px rgba(239,68,68,.16) !important;
+  background:rgba(239,68,68,.05) !important;
+}
+
+/* на всякий случай: если где-то остались старые классы */
+.correct, .wrong{ background:transparent !important; }
+
+.result{
+  font-weight:800;
+  font-size:16px;
+  color:var(--muted);
+}
+
+/* =========================================================
+   TASK 1 • LISTENING (строки на всю ширину)
+========================================================= */
+.gridTF{
+  margin-top:14px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  width:100%;
+}
+
+.tfRow{
+  width:100%;
+  display:flex;
+  align-items:center;
+  gap:14px;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:12px;
+}
+
+/* Task 1 — буква как в Task 2 (A. текст, без квадрата) */
+.qLabel{
+  flex:0 0 auto;
+  width:auto;
+  height:auto;
+  padding:0;
+  margin-right:6px;
+
+  background:transparent;
+  border:none;
+  border-radius:0;
+
+  font-weight:800;
+  font-size:18px;
+}
+
+/* точка после буквы */
+.qLabel::after{
+  content: ".";
+}
+
+
+.qText{
+  flex:1 1 auto;
+  min-width:0;
+  font-size:var(--base);
+  line-height:1.25;
+}
+
+/* блок True/False справа */
+.tfBtns{
+  flex:0 0 240px;
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+}
+
+/* кружки-индикаторы полностью убраны */
+.mark{ display:none !important; }
+
+@media (max-width:720px){
+  .tfRow{ flex-wrap:wrap; }
+  .tfBtns{
+    flex:1 1 100%;
+    justify-content:flex-start;
+  }
+}
+
+/* =========================================================
+   TASK 2 • READING
+========================================================= */
+.readingLayout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+  margin-top:12px;
+}
+
+.readingText{
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:14px;
+  background:rgba(238,242,255,.55);
+}
+
+.readingText h3{
+  margin:0 0 8px;
+  font-size:20px;
+  font-weight:800;
+}
+
+.readingText p{
+  margin:8px 0;
+  font-size:var(--base);
+  line-height:1.35;
+}
+
+.scrollBox{
+  max-height:520px;
+  overflow:auto;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:12px;
+}
+
+/* блок вопроса */
+.mcq{
+  margin-bottom:26px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
+  background:#fff;
+}
+
+.mcq:last-child{ border-bottom:none; }
+
+/* заголовок: A. текст */
+.mcqHead{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:14px;
+}
+
+.qTag{
+  font-weight:800;
+  font-size:18px;
+  background:transparent;
+  border:none;
+  padding:0;
+}
+
+.qTag::after{ content:"."; }
+
+.qTitle{
+  font-weight:800;         /* только заголовок жирный */
+  font-size:18px;
+  line-height:1.3;
+}
+
+.choices{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+/* =========================================================
+   TASK 3 • GRAMMAR
+========================================================= */
+#t3 .gText{
+  margin:10px 0;
+  font-size:var(--base);
+  line-height:1.5;
+  word-break:normal;
+}
+
+/* select как "коробочки" */
+#t3 select{
+  font-family:inherit;
+  font-size:var(--base);
+  line-height:1.2;
+  font-weight:400;
+  color:var(--ink);
+
+  border-radius:14px;
+  border:1px solid var(--line);
+  padding:8px 12px;
+  padding-right:34px;
+  background:#fff;
+  outline:none;
+
+  display:inline-block;
+  vertical-align:baseline;
+  margin:0 6px;
+
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted) 50%),
+    linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 55%,
+    calc(100% - 12px) 55%;
+  background-size:6px 6px, 6px 6px;
+  background-repeat:no-repeat;
+}
+
+#t3 select:focus{
+  border-color:rgba(59,130,246,.55);
+  box-shadow:0 0 0 4px rgba(59,130,246,.14);
+}
+
+/* скрыть пустой option (когда value="") */
+#t3 option[value=""]{ display:none; }
+
+/* подсветка проверки на select */
+#t3 select.choice-correct{
+  border:3px solid var(--good) !important;
+  box-shadow:0 0 0 5px rgba(34,197,94,.18) !important;
+  background:rgba(34,197,94,.06) !important;
+}
+
+#t3 select.choice-wrong{
+  border:3px solid var(--bad) !important;
+  box-shadow:0 0 0 5px rgba(239,68,68,.16) !important;
+  background:rgba(239,68,68,.05) !important;
+}
+
+/* =========================================================
+   TASK 4 • WRITING (минимально, чтобы было читабельно)
+========================================================= */
+textarea{
+  width:100%;
+  border-radius:16px;
+  border:1px solid var(--line);
+  padding:12px;
+  font-size:18px;
+  line-height:1.35;
+  font-family:inherit;
+  outline:none;
+}
+
+textarea:focus{
+  border-color:rgba(59,130,246,.45);
+  box-shadow:0 0 0 4px rgba(59,130,246,.12);
+}
+
+@media (max-width:900px){
+  .readingLayout{ grid-template-columns:1fr; }
+  .scrollBox{ max-height:420px; }
+  .top{ flex-direction:column; align-items:flex-start; }
+}
+/* Task 4 — отступ между заданием и письмом */
+.mailBox{
+  margin-top: 16px;
+}
+/* ===== BASE TASK TEXT (единый размер во всех заданиях) ===== */
+.taskText,
+.readingText,
+#g3,
+#t3,
+#t4,
+.mailBox,
+.mailQuote,
+.mailQuote p,
+.mailMeta,
+.mailMeta strong,
+.mailMeta span,
+.mailBody,
+.mailBody p {
+  font-size: var(--base);
+  line-height: 1.45;
+}
+/* ===== TASK 4 • Writing ===== */
+
+/* блок письма */
+.mailBox{
+  font-size: var(--base);
+  line-height: 1.45;
+}
+
+/* From / To / Subject */
+.mailMeta{
+  font-size: var(--base);
+  font-weight: 400;
+  margin-bottom: 14px;
+}
+
+/* само письмо */
+.mailQuote p{
+  font-size: var(--base);
+  line-height: 1.45;
+}
+.mailMeta{
+  margin-top: 18px;
+}
+.mailQuote{
+  margin-top: 18px;
+}
