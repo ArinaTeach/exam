@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VPR • English • Interactive</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand">
+        <div class="logo">📝</div>
+        <div>
+          <h1>ВПР • Английский • 5 класс</h1>
+          <div class="subtitle"></div>
+        </div>
+      </div>
+
+      
+    </header>
+
+    <!-- ===================== TASK 1 ===================== -->
+    <section id="t1" class="card">
+      <div class="cardHead">
+        <h2>Task 1 • Listening</h2>
+        <p class="hint">
+           <b>Прослушай текст и определите, какие из приведённых утверждений A–E соответствуют 
+содержанию текста (True), какие не соответствуют (False). </b> 
+         
+        </p>
+      </div>
+
+      <div class="toolsRow">
+        <button class="btn primary" id="audioPlayBtn" type="button">▶ Прослушать</button>
+        <button class="btn" id="audioPauseBtn" type="button">⏸ Пауза</button>
+        <button class="btn" id="audioReplayBtn" type="button">↻ Сначала</button>
+
+       
+
+      <audio id="task1Audio" preload="metadata">
+        <!-- ВСТАВИШЬ СЮДА СВОЙ ФАЙЛ (см. инструкцию ниже) -->
+<source src="audio/5.MP3" type="audio/mpeg" />
+
+      </audio>
+
+      <div class="gridTF" id="task1List" aria-label="Утверждения True/False">
+        <!-- A -->
+        <div class="tfRow" data-q="A">
+          <div class="qLabel">A</div>
+          <div class="qText">The message is from a father to his daughter called Alice.</div>
+          <div class="tfBtns" role="group" aria-label="A True/False">
+            <label class="opt">
+              <input type="radio" name="t1_A" value="T">
+              <span>True</span>
+            </label>
+            <label class="opt">
+              <input type="radio" name="t1_A" value="F">
+              <span>False</span>
+            </label>
+          </div>
+          <div class="mark" aria-hidden="true"></div>
+        </div>
+
+        <!-- B -->
+        <div class="tfRow" data-q="B">
+          <div class="qLabel">B</div>
+          <div class="qText">After the lessons Alice walked for thirty minutes.</div>
+          <div class="tfBtns" role="group" aria-label="B True/False">
+            <label class="opt">
+              <input type="radio" name="t1_B" value="T">
+              <span>True</span>
+            </label>
+            <label class="opt">
+              <input type="radio" name="t1_B" value="F">
+              <span>False</span>
+            </label>
+          </div>
+          <div class="mark" aria-hidden="true"></div>
+        </div>
+
+        <!-- C -->
+        <div class="tfRow" data-q="C">
+          <div class="qLabel">C</div>
+          <div class="qText">Alice has got a small cat.</div>
+          <div class="tfBtns" role="group" aria-label="C True/False">
+            <label class="opt">
+              <input type="radio" name="t1_C" value="T">
+              <span>True</span>
+            </label>
+            <label class="opt">
+              <input type="radio" name="t1_C" value="F">
+              <span>False</span>
+            </label>
+          </div>
+          <div class="mark" aria-hidden="true"></div>
+        </div>
+
+        <!-- D -->
+        <div class="tfRow" data-q="D">
+          <div class="qLabel">D</div>
+          <div class="qText">Today Alice is going to see a vet.</div>
+          <div class="tfBtns" role="group" aria-label="D True/False">
+            <label class="opt">
+              <input type="radio" name="t1_D" value="T">
+              <span>True</span>
+            </label>
+            <label class="opt">
+              <input type="radio" name="t1_D" value="F">
+              <span>False</span>
+            </label>
+          </div>
+          <div class="mark" aria-hidden="true"></div>
+        </div>
+
+        <!-- E -->
+        <div class="tfRow" data-q="E">
+          <div class="qLabel">E</div>
+          <div class="qText">Alice is going to cook with her mum.</div>
+          <div class="tfBtns" role="group" aria-label="E True/False">
+            <label class="opt">
+              <input type="radio" name="t1_E" value="T">
+              <span>True</span>
+            </label>
+            <label class="opt">
+              <input type="radio" name="t1_E" value="F">
+              <span>False</span>
+            </label>
+          </div>
+          <div class="mark" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="bottomRow">
+        <button class="btn success" id="checkT1" type="button">✅ Проверить Task 1</button>
+        <button class="btn" id="resetT1" type="button">↺ Сбросить</button>
+        <div class="result" id="resT1" aria-live="polite"></div>
+      </div>
+
+      
+    </section>
+
+    <!-- ===================== TASK 2 ===================== -->
+    <section id="t2" class="card">
+      <div class="cardHead">
+        <h2>Task 2 • Reading</h2>
+        <p class="hint">
+          Прочитай текст.
+		  Для каждого предложения А–Е выбери один правильный вариант ответа из трёх предложенных (1, 2 или 3).  <b></b>
+        </p>
+      </div>
+
+      <div class="readingLayout">
+        <article class="readingText" aria-label="Текст для чтения">
+          <div class="stickyBox">
+            <h3>Winter in Britain</h3>
+            <p>
+              In winter it does not usually snow in Britain. Temperatures can get as low as freezing point (0 °C),
+              though not much colder usually. That is why when it is cold or it begins to snow it can become
+              a real problem.
+            </p>
+            <p>
+              Last winter the temperature was low. One night there was a heavy snowstorm. So when Jane White got up
+              in the morning she saw that her garden was full of snow. The snow was so deep that Jane couldn't get
+              to her car. She phoned and asked a man to clear the snow away. When the man came, she opened the gate
+              and let him in. Jane said to this man, "Don't throw any snow on the bushes in my garden and don't throw
+              the snow on my fence. And don't throw any snow in the street."
+            </p>
+            <p>
+              Then Jane went to her office by train and the man started to work. When Jane came back, there was no snow
+              on the bushes, or the fence, or in the street. But Jane was not happy when she saw that all the snow was
+              on top of her car. The garage was full of snow.
+            </p>
+          </div>
+        </article>
+
+        <div class="readingQs" aria-label="Задания к тексту (прокрутка)">
+          <div class="scrollBox">
+            <!-- A -->
+            <div class="mcq" data-q="A">
+              <div class="mcqHead">
+                <div class="qTag">A</div>
+                <div class="qTitle">Usually in Britain in winter …</div>
+              </div>
+              <div class="choices">
+                <label class="opt"><input type="radio" name="t2_A" value="1"><span>1) the weather is very cold.</span></label>
+                <label class="opt"><input type="radio" name="t2_A" value="2"><span>2) it snows very often.</span></label>
+                <label class="opt"><input type="radio" name="t2_A" value="3"><span>3) there is not much snow.</span></label>
+              </div>
+              <div class="mark" aria-hidden="true"></div>
+            </div>
+
+            <!-- B -->
+            <div class="mcq" data-q="B">
+              <div class="mcqHead">
+                <div class="qTag">B</div>
+                <div class="qTitle">Last year …</div>
+              </div>
+              <div class="choices">
+                <label class="opt"><input type="radio" name="t2_B" value="1"><span>1) it was warm in winter.</span></label>
+                <label class="opt"><input type="radio" name="t2_B" value="2"><span>2) it was cold in winter.</span></label>
+                <label class="opt"><input type="radio" name="t2_B" value="3"><span>3) it didn’t snow in winter.</span></label>
+              </div>
+              <div class="mark" aria-hidden="true"></div>
+            </div>
+
+            <!-- C -->
+            <div class="mcq" data-q="C">
+              <div class="mcqHead">
+                <div class="qTag">C</div>
+                <div class="qTitle">In the morning Jane could not …</div>
+              </div>
+              <div class="choices">
+                <label class="opt"><input type="radio" name="t2_C" value="1"><span>1) take out her car.</span></label>
+                <label class="opt"><input type="radio" name="t2_C" value="2"><span>2) open her gate.</span></label>
+                <label class="opt"><input type="radio" name="t2_C" value="3"><span>3) get out of her house.</span></label>
+              </div>
+              <div class="mark" aria-hidden="true"></div>
+            </div>
+
+            <!-- D -->
+            <div class="mcq" data-q="D">
+              <div class="mcqHead">
+                <div class="qTag">D</div>
+                <div class="qTitle">Choose the TRUE sentence.</div>
+              </div>
+              <div class="choices">
+                <label class="opt"><input type="radio" name="t2_D" value="1"><span>1) Jane asked the man to throw the snow on her bushes.</span></label>
+                <label class="opt"><input type="radio" name="t2_D" value="2"><span>2) Jane told the man not to throw the snow on her fence.</span></label>
+                <label class="opt"><input type="radio" name="t2_D" value="3"><span>3) The man could throw the snow into the street.</span></label>
+              </div>
+              <div class="mark" aria-hidden="true"></div>
+            </div>
+
+            <!-- E -->
+            <div class="mcq" data-q="E">
+              <div class="mcqHead">
+                <div class="qTag">E</div>
+                <div class="qTitle">When Jane returned the snow from her path was …</div>
+              </div>
+              <div class="choices">
+                <label class="opt"><input type="radio" name="t2_E" value="1"><span>1) on her fence.</span></label>
+                <label class="opt"><input type="radio" name="t2_E" value="2"><span>2) in the street.</span></label>
+                <label class="opt"><input type="radio" name="t2_E" value="3"><span>3) on her car.</span></label>
+              </div>
+              <div class="mark" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <div class="bottomRow">
+            <button class="btn success" id="checkT2" type="button">✅ Проверить Task 2</button>
+            <button class="btn" id="resetT2" type="button">↺ Сбросить</button>
+            <div class="result" id="resT2" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TASK 3 ===================== -->
+    <section id="t3" class="card">
+      <div class="cardHead">
+        <h2>Task 3 • Grammar</h2>
+        <p class="hint">
+          Прочитай рассказ и выбери правильные формы в выпадающих окнах. <b></b>
+        </p>
+      </div>
+
+      <div class="grammarBox">
+        <h3>Alan and his family</h3>
+
+        <p class="gText">
+          Alan is a clown. He
+          <span class="gap" data-gap="A">
+            <select aria-label="A">
+              <option value="">A …</option>
+              <option value="1">try</option>
+              <option value="2">tries</option>
+              <option value="3">trying</option>
+            </select>
+          </span>
+          to make people laugh by his jokes. Alan lives and works in the circus.
+        </p>
+
+        <p class="gText">
+          He has got a very big family. His father Jack is a magician and his mother Bella is an acrobat.
+          Alan’s sister Mary
+          <span class="gap" data-gap="B">
+            <select aria-label="B">
+              <option value="">B …</option>
+              <option value="1">will be</option>
+              <option value="2">is</option>
+              <option value="3">has been</option>
+            </select>
+          </span>
+          a juggler for 5 years.
+        </p>
+
+        <p class="gText">
+          She juggles much
+          <span class="gap" data-gap="C">
+            <select aria-label="C">
+              <option value="">C …</option>
+              <option value="1">quickly</option>
+              <option value="2">most quickly</option>
+              <option value="3">more quickly</option>
+            </select>
+          </span>
+          than Alan does.
+        </p>
+
+        <p class="gText">
+          Alan’s grandparents
+          <span class="gap" data-gap="D">
+            <select aria-label="D">
+              <option value="">D …</option>
+              <option value="1">isn’t working</option>
+              <option value="2">didn’t work</option>
+              <option value="3">don’t work</option>
+            </select>
+          </span>
+          now. But three years ago they
+          <span class="gap" data-gap="E">
+            <select aria-label="E">
+              <option value="">E …</option>
+              <option value="1">were</option>
+              <option value="2">are</option>
+              <option value="3">will be</option>
+            </select>
+          </span>
+          acrobats.
+        </p>
+
+        <p class="gText muted">
+          They have got a lot of experience, so they can always give good advice.
+        </p>
+
+        <div class="bottomRow">
+          <button class="btn success" id="checkT3" type="button">✅ Проверить Task 3</button>
+          <button class="btn" id="resetT3" type="button">↺ Сбросить</button>
+          <div class="result" id="resT3" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TASK 4 ===================== -->
+    <section id="t4" class="card">
+      <div class="cardHead">
+        <h2>Task 4 • Writing</h2>
+        <p class="hint">
+           
+Ты получил электронное сообщение от своего друга по переписке Питера из Великобритании. 
+Напиши ему ответное письмо объёмом 40–60 слов, ответь на два его вопроса. Оформи 
+свой ответ в соответствии с правилами оформления письма. Не пиши адрес и дату. 
+Не забудь поблагодарить друга за полученное письмо.
+        </p>
+      </div>
+
+      <div class="writingGrid">
+        <div class="mailBox">
+          <div class="mailMeta">
+            <div><b>From:</b> Peter@mail.uk</div>
+            <div><b>To:</b> Russian friend@mail.ru</div>
+            <div><b>Subject:</b> School</div>
+          </div>
+
+          <blockquote class="mailQuote">
+            <p>
+              …My lessons usually start at 9 o’clock. I usually have three lessons in the morning and two lessons in the afternoon.
+            </p>
+            <p>
+              How many lessons do you usually have? What is your favourite subject?
+            </p>
+            <p class="muted">Write back soon. <br>Best wishes, <br>Pete</p>
+          </blockquote>
+        </div>
+
+        <div class="writeArea">
+          <div class="writeTop">
+            <div class="pill">Start with: <b>Hello Pete,</b></div>
+            
+          </div>
+
+          <textarea id="writingText" rows="12" placeholder="Hello Pete,
+Thank you for your email. ..."></textarea>
+
+          <div class="writeHelp muted">
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span class="muted"></span>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
