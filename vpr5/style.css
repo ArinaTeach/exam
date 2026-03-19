@@ -48,15 +48,12 @@ body{
 }
 
 .logo{
-  width:44px;
-  height:44px;
-  display:grid;
-  place-items:center;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:14px;
-  box-shadow:var(--shadow);
-  font-size:22px;
+  width:40px;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
 }
 
 h1{
