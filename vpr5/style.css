@@ -455,3 +455,7 @@ textarea:focus{
 .mailQuote{
   margin-top: 18px;
 }
+.logo img{
+  width:40px;
+  height:auto;
+}
